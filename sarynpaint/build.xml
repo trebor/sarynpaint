@@ -110,7 +110,7 @@
     <jar destfile = "${jar-name}"
          update   = "true"
          basedir  = "resources"
-         includes = "gpl.txt"/>
+         includes = "gpl-3.0.txt"/>
   </target>
 
   <!-- construct mac .app -->
@@ -177,7 +177,7 @@
     </exec>
     <copy file = "${resources}/readme.txt" 
           todir = "${dmg-dir}"/>
-    <copy file = "${resources}/gpl.txt" 
+    <copy file = "${resources}/gpl-3.0.txt" 
           todir = "${dmg-dir}"/>
     <copy file = "${icons}/${app-title}Disk.icns"
           tofile = "${dmg-dir}/.VolumeIcon.icns"/>
@@ -242,7 +242,7 @@
           todir = "${zip-dir}"/>
     <copy file = "${resources}/readme.txt"
           todir = "${zip-dir}"/>
-    <copy file = "${resources}/gpl.txt"
+    <copy file = "${resources}/gpl-3.0.txt"
           todir = "${zip-dir}"/>
     <copy todir = "${zip-dir}/samples/">
       <fileset dir = "${samples}"/>
