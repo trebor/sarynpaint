@@ -17,12 +17,6 @@
  * along with SarynPaint.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * SarynPaint is a simple paint program for very young children.  It was
- * written for my dear friend Saryn who has a particular fondness for
- * the color pink.
- */
-
 package org.trebor.sarynpaint;
 
 import javax.swing.*;
@@ -36,7 +30,15 @@ import java.applet.*;
 import java.net.*;
 import javax.sound.sampled.*;
 
-class SarynPaint extends JFrame
+/**
+ * SarynPaint is a simple paint program for very young children.  It was
+ * written for my dear friend Saryn who had at the time a particular
+ * fondness for the color pink.
+ *
+ * @author Robert Harris
+ */
+
+public class SarynPaint extends JFrame
 {
   // constants
 
@@ -459,9 +461,9 @@ class SarynPaint extends JFrame
       guiObjects.get(i).setCursor(cursor);
   }
 
-  // generic pallet item base class
+  /** A generic pallet item base class. */
 
-  abstract class PalletItem extends JPanel
+  public abstract class PalletItem extends JPanel
   {
     // audio clip associated with this item
 
@@ -533,9 +535,9 @@ class SarynPaint extends JFrame
     }
   }
 
-  // color pallet item
+  /** A color pallet item. */
 
-  class ColorPalletItem extends PalletItem
+  public class ColorPalletItem extends PalletItem
   {
     Color color = null;
 
@@ -575,9 +577,9 @@ class SarynPaint extends JFrame
     }
   }
 
-  // shape pallet item
+  /** A shape pallet item. */
 
-  class ShapePalletItem extends PalletItem
+  public class ShapePalletItem extends PalletItem
   {
     Shape shape = null;
 
@@ -617,9 +619,9 @@ class SarynPaint extends JFrame
     }
   }
 
-  // action pallet item
+  /** An action pallet item (not currently working). */
 
-  class ActionPalletItem extends ShapePalletItem
+  public class ActionPalletItem extends ShapePalletItem
   {
     ActionPalletItem(String name, Shape icon)
     {
@@ -627,9 +629,9 @@ class SarynPaint extends JFrame
     }
   }
 
-  // a pallet object
+  /** A pallet of color or shape tools. */
 
-  class Pallet extends JPanel
+  public class Pallet extends JPanel
   {
     // construct a pallet
 
@@ -657,9 +659,9 @@ class SarynPaint extends JFrame
     }
   }
 
-  // sound clip
+  /** A sound clip which can be loaded and played. */
 
-  class SoundClip
+  public class SoundClip
   {
     AudioClip sound       = null;
     String    name        = null;

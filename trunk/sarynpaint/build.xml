@@ -17,7 +17,6 @@
   <property name = "build-dir"          value = "build"/>
   <property name = "resources"          value = "resources"/>
   <property name = "icons"              value = "${resources}/icons"/>
-  <property name = "samples"            value = "${resources}/samples"/>
   <property name = "jar-name"           value = "${app-name}.jar"/>
   <property name = "app-dir"            value = "${app-title}.app"/>
   <property name = "dmg-dir"            value = "disk-image"/>
@@ -53,7 +52,7 @@
   <target name = "doc" 
           description = "compile java documentation">
     <javadoc
-        packagenames = "{domain-scope}.${app-name}.*"
+        packagenames = "${domain-scope}.${app-name}.*"
         sourcepath   = "${source-dir}"
         destdir      = "${doc-dir}">
     </javadoc>
@@ -244,9 +243,6 @@
           todir = "${zip-dir}"/>
     <copy file = "${resources}/gpl-3.0.txt"
           todir = "${zip-dir}"/>
-    <copy todir = "${zip-dir}/samples/">
-      <fileset dir = "${samples}"/>
-    </copy>
 
     <!-- remove old zip file to be sure no old cruft is laying about -->
 
@@ -314,7 +310,7 @@
 
     <!-- set te volume icon for the build enviroment disk image -->
 
-    <copy file = "${icons}/FreeSandDisk - environment.icns"
+    <copy file = "${icons}/${app-title}Disk.icns"
           tofile = "${build-env-dir}/.VolumeIcon.icns"/>
 
     <!-- build temporary disk image -->
@@ -375,24 +371,6 @@
 
   <target name = "distro" depends = "build-env, zip, dmg"
           description = "build all distributions">
-  </target>
-
-  <!-- push distributions to trebor.org staging area -->
-
-  <target name = "push" depends = "distro, doc"
-          description = "push distributions to trebor.org staging area">
-    <copy file = "${dmg-name}"
-          todir = "../${domain}/${app-name}/"/>
-    <copy file = "${zip-name}"
-          todir = "../${domain}/${app-name}/"/>
-    <copy file = "${build-env-dmg}"
-          todir = "../${domain}/${app-name}/"/>
-    <copy file = "${build-env-zip}"
-          todir = "../${domain}/${app-name}/"/>
-    <copy todir = "../${domain}/${app-name}/${doc-dir}">
-      <fileset dir = "${doc-dir}"/>
-    </copy>
-
   </target>
 
   <!-- build everything -->
