@@ -80,7 +80,7 @@ public class SarynPaint extends JFrame
   boolean   soundEnabled = true;
   int       inputMode    = MOVEMODE;
   float     paintScale   = shapeScale;
-  Calendar	startTime    = Calendar.getInstance();
+  Calendar  startTime    = Calendar.getInstance();
   Color     backGround   = Color.WHITE;
 
   // help related objects
@@ -106,11 +106,10 @@ public class SarynPaint extends JFrame
 
   SoundClip soundOn      = new SoundClip("soundon");
   SoundClip soundOff     = new SoundClip("soundoff");
-  SoundClip moveMode     = new SoundClip("move");
-  SoundClip clickMode    = new SoundClip("click");
-  SoundClip stickyMode   = new SoundClip("sticky");
+  SoundClip moveMode     = new SoundClip("movemode");
+  SoundClip clickMode    = new SoundClip("clickmode");
+  SoundClip stickyMode   = new SoundClip("stickymode");
   SoundClip welcome      = new SoundClip("welcome");
-  SoundClip help         = new SoundClip("help");
   SoundClip goodBye      = new SoundClip("goodBye");
 
   // input mode sounds
@@ -133,9 +132,9 @@ public class SarynPaint extends JFrame
     new ShapePalletItem("Circle",   circle),
     new ShapePalletItem("Heart",    heart ),
     new ShapePalletItem("Star",     star),
-    new ShapePalletItem("Dog",      dog),
-    new ShapePalletItem("Cat",      cat),
-    new ShapePalletItem("Fish",	 fish),
+    new ShapePalletItem("Doggy",    dog),
+    new ShapePalletItem("Kitty",    cat),
+    new ShapePalletItem("Fishy",    fish),
   };
   // color pallet items
 
@@ -354,12 +353,6 @@ public class SarynPaint extends JFrame
             inputMode++;
             inputMode %= MODECOUNT;
             modeSounds[inputMode].play();
-          }
-          // print help
-
-          if (e.getKeyChar() == KeyEvent.VK_SLASH)
-          {
-            help.play();
           }
         }
       }
@@ -720,7 +713,12 @@ public class SarynPaint extends JFrame
         // if the file exists load the audo clip
 
         if (url != null)
+        {
           sound = Applet.newAudioClip(url);
+          System.out.println("got resource: " + url);
+          System.out.println("    resource: " + sound);
+        }
+
       }
       catch (Exception e)
       {
