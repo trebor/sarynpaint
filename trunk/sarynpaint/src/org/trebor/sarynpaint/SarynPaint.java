@@ -99,7 +99,7 @@ public class SarynPaint extends JFrame
     "input modes:",
     "  MOVE   all movments paint",
     "  STICKY click toggles paint mode",
-    "  CLICK  click and drage to paint",
+    "  CLICK  click and drag to paint",
   };
 
   // some sounds
