@@ -4,7 +4,7 @@ SarynPaint is a simple paint program for children about 2 years old and up.
 
 SarynPaint was written for my friend Saryn, who was two years old at the time.  She had some difficulty operating the mouse, specifically clicking and dragging.
 
-The program is setup such that simply moving the mouse will paint.  Colors and paintbrush shapes are selected by mousing over panels on the screen edges.  More advanced mousing modes are available for older children.
+The program is set up such that simply moving the mouse will paint.  Colors and paintbrush shapes are selected by mousing over panels on the screen edges.  More advanced mousing modes are available for older children.
 
 = Controls =
 
