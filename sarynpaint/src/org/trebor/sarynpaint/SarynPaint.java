@@ -713,12 +713,7 @@ public class SarynPaint extends JFrame
         // if the file exists load the audo clip
 
         if (url != null)
-        {
           sound = Applet.newAudioClip(url);
-          System.out.println("got resource: " + url);
-          System.out.println("    resource: " + sound);
-        }
-
       }
       catch (Exception e)
       {
