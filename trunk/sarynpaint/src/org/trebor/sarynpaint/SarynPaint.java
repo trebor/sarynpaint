@@ -199,7 +199,7 @@ public class SarynPaint extends JFrame
 
     // if full screen is supported setup frame accoringly
 
-    if (gv.isFullScreenSupported())
+    if (gv.isFullScreenSupported() && false)
     {
       setUndecorated(true);
       setVisible(true);
