@@ -20,9 +20,9 @@ The following commands are available in SarynPaint:
 
 There are three mouse modes:
 
-  * MOVE MODE - all motion paints, moving over a color or shape selects it
-  * STICKY MODE - clicking the mouse button toggles painting on and off,  moving over a color or shape still selects it.
-  * CLICK MODE - traditional click and drag to paint, colors and shapes must be clicked on to be selected.
+  * MOVE MODE - all motion paints, move over a color or shape to select it
+  * STICKY MODE - click the mouse button to toggle painting on and off, move over a color or shape to select it
+  * CLICK MODE - click and drag to paint, click a color or shape to select it
 
 = Java Version =
 
