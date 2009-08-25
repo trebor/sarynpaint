@@ -15,7 +15,7 @@ The following commands are available in SarynPaint:
 
   * ESC - exits the program
   * SPACE - toggles sound on/of
-  * ENTER - cycles input mode
+  * ENTER - cycles through mouse modes (see below)
   * DOUBLE CLICK ON PAINT AREA - clears screen
   * DOUBLE CLICK ON COLOR - clear screen to selected background color
 
