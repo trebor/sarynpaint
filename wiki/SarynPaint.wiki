@@ -10,17 +10,17 @@ The program is setup such that simply moving the mouse will paint.  Colors and p
 
 The following commands are available in SarynPaint:
 
-* ESC          exits program
-* SPACE        toggles sound on/of
-* DOUBLE CLICK clears screen",
-* DOUBLE CLICK on a color sets background",
-* ENTER        cycles input mode",
+  * ESC - exits the program
+  * SPACE - toggles sound on/of
+  * ENTER - cycles input mode
+  * DOUBLE CLICK ON PAINT AREA - clears screen
+  * DOUBLE CLICK ON COLOR - clear screen to selected background color
 
 There are three mouse modes:
 
-* MOVE MODE - all motion paints, moving over a color or shape selects it
-* STICKY MODE - clicking the mouse button toggles painting on and off,  moving over a color or shape still selects it.
-* CLICK MODE - traditional click and drag to paint, colors and shapes must be clicked on to be selected.
+  * MOVE MODE - all motion paints, moving over a color or shape selects it
+  * STICKY MODE - clicking the mouse button toggles painting on and off,  moving over a color or shape still selects it.
+  * CLICK MODE - traditional click and drag to paint, colors and shapes must be clicked on to be selected.
 
 = Java Version =
 
