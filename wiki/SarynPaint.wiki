@@ -24,4 +24,4 @@ There are three mouse modes:
 
 = Java Version =
 
-SarynPaint is compiled under Java version 1.5 and should run on JVMS which are 1.5 and above.
+SarynPaint is compiled under Java version 1.5 and should run on versions 1.5 and above.
