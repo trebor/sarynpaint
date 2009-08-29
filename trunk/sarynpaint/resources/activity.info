@@ -1,0 +1,6 @@
+[Activity]
+activity_version = 1
+exec = sugar-activity sarynpaint.SarynPaintActivity
+icon = activity-sarynpaint
+name = SarynPaint
+service_name = org.trebor.sarynpaint.SarynPaint

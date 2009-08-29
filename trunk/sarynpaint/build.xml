@@ -1,7 +1,7 @@
 <?xml version = "1.0"?>
 
-<project name = "SarynPaint" 
-         default = "compile" 
+<project name = "SarynPaint"
+         default = "compile"
          basedir = ".">
 
   <!-- build variables -->
@@ -18,10 +18,12 @@
   <property name = "resources"          value = "resources"/>
   <property name = "icons"              value = "${resources}/icons"/>
   <property name = "jar-name"           value = "${app-name}.jar"/>
+  <property name = "activity-dir"       value = "${app-title}.activity"/>
   <property name = "app-dir"            value = "${app-title}.app"/>
   <property name = "dmg-dir"            value = "disk-image"/>
   <property name = "dmg-name"           value = "${app-name}.dmg"/>
   <property name = "dmg-vol-name"       value = "${app-title}"/>
+  <property name = "xo-name"            value = "${app-name}.xo"/>
   <property name = "zip-dir"            value = "zip-image"/>
   <property name = "zip-name"           value = "${app-name}.zip"/>
   <property name = "build-env-dmg"      value = "${app-name}-build.dmg"/>
@@ -31,17 +33,19 @@
   <property name = "java-framework-mac" value = "/System/Library/Frameworks/JavaVM.framework/Versions/Current/Resources/MacOS"/>
 
   <!-- remove all built files -->
-     
-  <target name = "clean" 
+
+  <target name = "clean"
           description = "remove all generated files">
     <delete dir = "${build-dir}"/>
     <delete dir = "${doc-dir}"/>
+    <delete dir = "${activity-dir}"/>
     <delete dir = "${app-dir}"/>
     <delete dir = "${dmg-dir}"/>
     <delete dir = "${zip-dir}"/>
     <delete dir = "${build-env-dir}"/>
     <delete file = "${jar-name}"/>
     <delete file = "${dmg-name}"/>
+    <delete file = "${xo-name}"/>
     <delete file = "${zip-name}"/>
     <delete file = "${build-env-dmg}"/>
     <delete file = "${build-env-zip}"/>
@@ -49,7 +53,7 @@
 
   <!-- compile java doc -->
 
-  <target name = "doc" 
+  <target name = "doc"
           description = "compile java documentation">
     <javadoc
         packagenames = "${domain-scope}.${app-name}.*"
@@ -60,18 +64,18 @@
 
   <!-- initialize the build -->
 
-  <target name = "init" 
+  <target name = "init"
           description = "initialize the build enviroment">
     <mkdir dir = "${build-dir}"/>
   </target>
 
   <!-- compile project -->
-  
-  <target name = "compile" 
-          depends = "init" 
+
+  <target name = "compile"
+          depends = "init"
           description = "compile java files">
     <javac srcdir = "${source-dir}"
-           destdir = "${build-dir}" 
+           destdir = "${build-dir}"
            debug = "true">
       <compilerarg value = "-Xlint:unchecked"/>
     </javac>
@@ -79,8 +83,8 @@
 
   <!-- run project -->
 
-  <target name = "run" 
-          depends = "compile" 
+  <target name = "run"
+          depends = "compile"
           description = "execute project code">
     <java classpath = "${build-dir}"
           classname = "${domain-scope}.${app-name}.SarynPaint"
@@ -88,7 +92,7 @@
       <arg value = "-Xdoc:name=${app-title}"/>
     </java>
   </target>
-  
+
   <!-- construct jar -->
 
   <target name = "jar" depends = "compile" description = "construct jar package">
@@ -112,10 +116,37 @@
          includes = "gpl-3.0.txt"/>
   </target>
 
+  <!-- construct Sugar activity bundle -->
+
+  <target name = "activity"
+          depends = "jar"
+          description = "construct Sugar activity bundle">
+
+    <!-- build directory structure -->
+
+    <mkdir dir = "${activity-dir}"/>
+    <mkdir dir = "${activity-dir}/activity"/>
+
+    <!-- assemble files -->
+
+    <copy file = "${resources}/activity.info"
+          todir = "${activity-dir}/activity"/>
+    <copy file = "${icons}/${app-title}Icon.svg"
+          tofile = "${activity-dir}/activity/activity-sarynpaint.svg"/>
+    <copy file = "${resources}/readme.txt"
+          todir = "${activity-dir}"/>
+    <copy file = "${resources}/gpl-3.0.txt"
+          todir = "${activity-dir}"/>
+    <copy file = "${resources}/sarynpaint.py"
+          todir = "${activity-dir}"/>
+    <copy file = "${jar-name}"
+          todir = "${activity-dir}"/>
+  </target>
+
   <!-- construct mac .app -->
 
-  <target name = "app" 
-          depends = "jar" 
+  <target name = "app"
+          depends = "jar"
           description = "construct os x application (mac only)">
 
     <!-- build directory structure -->
@@ -162,8 +193,8 @@
 
   <!-- construct distribution disk image -->
 
-  <target name = "dmg" 
-          depends = "app" 
+  <target name = "dmg"
+          depends = "app"
           description = "construct os x distribution disk image (mac only)">
 
     <!-- assemble disk image contents -->
@@ -174,9 +205,9 @@
       <arg value = "${app-dir}"/>
       <arg value = "${dmg-dir}"/>
     </exec>
-    <copy file = "${resources}/readme.txt" 
+    <copy file = "${resources}/readme.txt"
           todir = "${dmg-dir}"/>
-    <copy file = "${resources}/gpl-3.0.txt" 
+    <copy file = "${resources}/gpl-3.0.txt"
           todir = "${dmg-dir}"/>
     <copy file = "${icons}/${app-title}Disk.icns"
           tofile = "${dmg-dir}/.VolumeIcon.icns"/>
@@ -230,14 +261,14 @@
 
   <!-- construct distribution zip file -->
 
-  <target name = "zip" 
+  <target name = "zip"
           depends = "jar"
           description = "construct distribution zip file&#10;">
 
     <!-- collect zip image contents -->
 
     <mkdir dir = "${zip-dir}"/>
-    <copy file = "${jar-name}" 
+    <copy file = "${jar-name}"
           todir = "${zip-dir}"/>
     <copy file = "${resources}/readme.txt"
           todir = "${zip-dir}"/>
@@ -264,6 +295,26 @@
 
     <move file = "${app-name}"
           tofile = "${zip-dir}"/>
+
+  </target>
+
+  <!-- construct Sugar activity file -->
+
+  <target name = "xo"
+          depends = "activity"
+          description = "construct Sugar activity file">
+
+    <!-- remove old zip file to be sure no old cruft is laying about -->
+
+    <delete file = "${xo-name}"/>
+
+    <!-- build zip -->
+
+    <exec executable = "zip">
+      <arg value = "-r"/>
+      <arg value = "${xo-name}"/>
+      <arg value = "${activity-dir}"/>
+    </exec>
 
   </target>
 
@@ -369,7 +420,7 @@
 
   <!-- build all distribtions -->
 
-  <target name = "distro" depends = "build-env, zip, dmg"
+  <target name = "distro" depends = "build-env, zip, dmg, xo"
           description = "build all distributions">
   </target>
 
