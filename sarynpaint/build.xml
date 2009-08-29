@@ -129,6 +129,8 @@
 
     <!-- assemble files -->
 
+    <copy file = "${resources}/MANIFEST"
+          todir = "${activity-dir}"/>
     <copy file = "${resources}/activity.info"
           todir = "${activity-dir}/activity"/>
     <copy file = "${icons}/${app-title}Icon.svg"
