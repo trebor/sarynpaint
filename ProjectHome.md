@@ -1,0 +1,5 @@
+**SarynPaint** was written for my friend Saryn, who was two years old at the time. She had some difficulty operating the mouse, specifically clicking and dragging.  The program is setup to paint simply by moving the mouse.  You can select colors and paintbrush shapes by moving the mouse over the panels on the screen edges.  More advanced mousing modes are available for older children.
+
+It's build in Java and should run on any [Mac](http://sarynpaint.googlecode.com/files/sarynpaint.dmg), [Windows](http://sarynpaint.googlecode.com/files/sarynpaint.jar) or [Linux](http://sarynpaint.googlecode.com/files/sarynpaint.jar) computer with Java 1.5 or later installed, which most computers do have already install these days.
+
+![http://sarynpaint.googlecode.com/svn/trunk/sarynpaint/resources/screenshot.png](http://sarynpaint.googlecode.com/svn/trunk/sarynpaint/resources/screenshot.png)

@@ -1,0 +1,29 @@
+SarynPaint is a simple paint program for children about 2 years old and up.
+
+# Introduction #
+
+SarynPaint was written for my friend Saryn, who was two years old at the time.  She had some difficulty operating the mouse, specifically clicking and dragging.
+
+The program is setup to paint simply by moving the mouse.  You can select colors and paintbrush shapes by moving the mouse over the panels on the screen edges.  More advanced mousing modes are available for older children.
+
+When you select a color or a shape, or press a keyboard command, you will hear Saryn tell you what happened.  For your sanity these sounds may be turned off with the space bar.
+
+# Controls #
+
+The following commands are available in SarynPaint:
+
+  * ESC - exits the program
+  * SPACE - toggles sound on/of
+  * ENTER - cycles through mouse modes (see below)
+  * DOUBLE CLICK ON PAINT AREA - clears screen
+  * DOUBLE CLICK ON COLOR - clear screen to selected background color
+
+There are three mouse modes:
+
+  * MOVE MODE - move to paint, move over a color or shape to select it
+  * STICKY MODE - click to toggle painting on and off, move over a color or shape to select it
+  * CLICK MODE - click and drag to paint, click a color or shape to select it
+
+# Java Version #
+
+SarynPaint is compiled under Java version 1.5 and should run on versions 1.5 and above.
