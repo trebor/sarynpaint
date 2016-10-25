@@ -178,7 +178,7 @@
 
     <!-- identify this as an application -->
 
-    <exec executable = "/Developer/Tools/SetFile">
+    <exec executable = "/usr/bin/SetFile">
       <arg value = "-a"/>
       <arg value = "B"/>
       <arg value = "${app-dir}"/>
@@ -186,7 +186,7 @@
 
     <!-- indicate that this has a custum icon -->
 
-    <exec executable = "/Developer/Tools/SetFile">
+    <exec executable = "/usr/bin/SetFile">
       <arg value = "-a"/>
       <arg value = "C"/>
       <arg value = "${app-dir}"/>
@@ -231,7 +231,7 @@
 
     <!-- activate custom volume icon -->
 
-    <exec executable = "/Developer/Tools/SetFile">
+    <exec executable = "/usr/bin/SetFile">
       <arg value = "-a"/>
       <arg value = "C"/>
       <arg value = "/Volumes/${dmg-vol-name}"/>
@@ -383,7 +383,7 @@
 
     <!-- activate custom volume icon -->
 
-    <exec executable = "/Developer/Tools/SetFile">
+    <exec executable = "/usr/bin/SetFile">
       <arg value = "-a"/>
       <arg value = "C"/>
       <arg value = "/Volumes/${build-env-vol-name}"/>
